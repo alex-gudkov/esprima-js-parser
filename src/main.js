@@ -33,12 +33,26 @@ function jsToAst(inputFile, outputFile) {
   fs.writeFileSync(outputFilePath, outputFileData);
 }
 
-var flags = utils.parseCommandLineFlags();
+var parser = {
+  jsToTokens,
+  jsToAst,
+};
 
-if (flags.isJsToTokens) {
-  jsToTokens(flags.inputFile, flags.outputFile);
+function main() {
+  try {
+    var flags = utils.parseCommandLineFlags();
+
+    if (flags.isJsToTokens) {
+      parser.jsToTokens(flags.inputFile, flags.outputFile);
+    }
+
+    if (flags.isJsToAst) {
+      parser.jsToAst(flags.inputFile, flags.outputFile);
+    }
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
 }
 
-if (flags.isJsToAst) {
-  jsToAst(flags.inputFile, flags.outputFile);
-}
+main();
