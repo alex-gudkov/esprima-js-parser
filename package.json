@@ -2,15 +2,15 @@
   "name": "esprima-js-parser",
   "version": "1.0.0",
   "description": "",
+  "author": "alex-gudkov",
+  "private": true,
+  "license": "UNLICENSED",
   "main": "./src/main.js",
   "scripts": {
     "parse:js-to-tokens": "node ./src/main.js --jsToTokens --in ./resource/js/program.js --out ./resource/tokens/program.tokens.json",
     "parse:js-to-ast": "node ./src/main.js --jsToAst --in ./resource/js/program.js --out ./resource/ast/program.ast.json",
     "parse:all": "npm run parse:js-to-tokens && npm run parse:js-to-ast"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "esprima": "^4.0.1"
   }
