@@ -1,11 +1,36 @@
+var fs = require('node:fs');
+var path = require('node:path');
 var esprima = require('esprima');
 
-var program = 'var x = 1, y = x + 2';
+function jsToTokens(inputFile, outputFile) {
+  // read JS file
+  var inputFilePath = path.join(__dirname, inputFile);
+  var inputFileData = fs.readFileSync(inputFilePath, { encoding: 'utf8' });
 
-var tokens = esprima.tokenize(program);
+  // tokenize JS file
+  var tokens = esprima.tokenize(inputFileData);
 
-console.dir(tokens, { depth: Infinity });
+  // write tokens file
+  var outputFilePath = path.join(__dirname, outputFile);
+  var outputFileData = JSON.stringify(tokens, null, 2) + '\n';
 
-var abstractSyntaxTree = esprima.parseScript(program);
+  fs.writeFileSync(outputFilePath, outputFileData);
+}
 
-console.dir(abstractSyntaxTree, { depth: Infinity });
+function jsToAst(inputFile, outputFile) {
+  // read JS file
+  var inputFilePath = path.join(__dirname, inputFile);
+  var inputFileData = fs.readFileSync(inputFilePath, { encoding: 'utf8' });
+
+  // parse JS file
+  var abstractSyntaxTree = esprima.parse(inputFileData);
+
+  // write AST file
+  var outputFilePath = path.join(__dirname, outputFile);
+  var outputFileData = JSON.stringify(abstractSyntaxTree, null, 2) + '\n';
+
+  fs.writeFileSync(outputFilePath, outputFileData);
+}
+
+jsToTokens('./resource/js/program.js', './resource/tokens/program.tokens.json');
+jsToAst('./resource/js/program.js', './resource/ast/program.ast.json');
