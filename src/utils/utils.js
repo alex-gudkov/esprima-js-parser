@@ -1,6 +1,6 @@
-var { parseCommandLineFlags } = require('./parse-command-line-flags');
+const { parseCommandLineFlags } = require('./parse-command-line-flags');
 
-var utils = {
+const utils = {
   parseCommandLineFlags,
 };
 

@@ -1,18 +1,18 @@
-var fs = require('node:fs');
-var path = require('node:path');
-var esprima = require('esprima');
+const fs = require('node:fs');
+const path = require('node:path');
+const esprima = require('esprima');
 
 function parseJsToTokens(inputFile, outputFile) {
   // read JS file
-  var inputFilePath = path.join(__dirname, '..', '..', inputFile);
-  var inputFileData = fs.readFileSync(inputFilePath, { encoding: 'utf8' });
+  const inputFilePath = path.join(__dirname, '..', '..', inputFile);
+  const inputFileData = fs.readFileSync(inputFilePath, { encoding: 'utf8' });
 
   // tokenize JS file
-  var tokens = esprima.tokenize(inputFileData);
+  const tokens = esprima.tokenize(inputFileData);
 
   // write tokens file
-  var outputFilePath = path.join(__dirname, '..', '..', outputFile);
-  var outputFileData = JSON.stringify(tokens, null, 2) + '\n';
+  const outputFilePath = path.join(__dirname, '..', '..', outputFile);
+  const outputFileData = JSON.stringify(tokens, null, 2) + '\n';
 
   fs.writeFileSync(outputFilePath, outputFileData);
 }

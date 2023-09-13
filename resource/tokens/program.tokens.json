@@ -1,7 +1,7 @@
 [
   {
     "type": "Keyword",
-    "value": "var"
+    "value": "const"
   },
   {
     "type": "Identifier",

@@ -37,7 +37,7 @@
           }
         }
       ],
-      "kind": "var"
+      "kind": "const"
     }
   ],
   "sourceType": "script"

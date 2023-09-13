@@ -1,7 +1,7 @@
-var { parseJsToTokens } = require('./parse-js-to-tokens');
-var { parseJsToAst } = require('./parse-js-to-ast');
+const { parseJsToTokens } = require('./parse-js-to-tokens');
+const { parseJsToAst } = require('./parse-js-to-ast');
 
-var parser = {
+const parser = {
   parseJsToTokens,
   parseJsToAst,
 };

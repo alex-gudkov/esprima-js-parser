@@ -1,9 +1,9 @@
-var parser = require('./parser/parser');
-var utils = require('./utils/utils');
+const parser = require('./parser/parser');
+const utils = require('./utils/utils');
 
 function main() {
   try {
-    var flags = utils.parseCommandLineFlags();
+    const flags = utils.parseCommandLineFlags();
 
     if (flags.isJsToTokens) {
       parser.parseJsToTokens(flags.inputFile, flags.outputFile);

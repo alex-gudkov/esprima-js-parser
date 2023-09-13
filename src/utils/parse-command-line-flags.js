@@ -1,10 +1,10 @@
-var util = require('node:util');
+const util = require('node:util');
 
 /**
  * @returns {{ inputFile: string | null; outputFile: string | null; isJsToTokens: boolean; isJsToAst: boolean; }} The parsed command line flags.
  */
 function parseCommandLineFlags() {
-  var options = {
+  const options = {
     'in': {
       type: 'string',
     },
@@ -19,7 +19,7 @@ function parseCommandLineFlags() {
     },
   };
 
-  var parsedArgs = util.parseArgs({
+  const parsedArgs = util.parseArgs({
     args: process.argv,
     options,
     strict: false,
