@@ -1,6 +1,7 @@
 var fs = require('node:fs');
 var path = require('node:path');
 var esprima = require('esprima');
+var utils = require('./utils/utils');
 
 function jsToTokens(inputFile, outputFile) {
   // read JS file
@@ -32,5 +33,12 @@ function jsToAst(inputFile, outputFile) {
   fs.writeFileSync(outputFilePath, outputFileData);
 }
 
-jsToTokens('./resource/js/program.js', './resource/tokens/program.tokens.json');
-jsToAst('./resource/js/program.js', './resource/ast/program.ast.json');
+var flags = utils.parseCommandLineFlags();
+
+if (flags.isJsToTokens) {
+  jsToTokens(flags.inputFile, flags.outputFile);
+}
+
+if (flags.isJsToAst) {
+  jsToAst(flags.inputFile, flags.outputFile);
+}

@@ -4,7 +4,9 @@
   "description": "",
   "main": "./src/main.js",
   "scripts": {
-    "start": "node ./src/main.js"
+    "parse:js-to-tokens": "node ./src/main.js --jsToTokens --in ./resource/js/program.js --out ./resource/tokens/program.tokens.json",
+    "parse:js-to-ast": "node ./src/main.js --jsToAst --in ./resource/js/program.js --out ./resource/ast/program.ast.json",
+    "parse:all": "npm run parse:js-to-tokens && npm run parse:js-to-ast"
   },
   "keywords": [],
   "author": "",
