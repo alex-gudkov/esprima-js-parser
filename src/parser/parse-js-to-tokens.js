@@ -3,6 +3,11 @@ const path = require('node:path');
 
 const esprima = require('esprima');
 
+/**
+ * @param {string} inputFile
+ * @param {string} outputFile
+ * @returns {Promise<void>}
+ */
 async function parseJsToTokens(inputFile, outputFile) {
   // read JS file
   const inputFilePath = path.join(__dirname, '..', '..', inputFile);

@@ -1,7 +1,13 @@
 const util = require('node:util');
 
 /**
- * @returns {{ inputFile: string | null; outputFile: string | null; isJsToTokens: boolean; isJsToAst: boolean; }} The parsed command line flags.
+ * @returns {{
+ *  inputFile: string | null;
+ *  outputFile: string | null;
+ *  isJsToTokens: boolean;
+ *  isJsToAst: boolean;
+ * }} The parsed command line flags.
+ * @throws {Error} If the command line flags are invalid.
  */
 function parseCommandLineFlags() {
   const options = {
